@@ -9,6 +9,7 @@ cd ~/.dotfiles
 
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.config/nvim ~/.config/nvim
+ln -s ~/.dotfiles/.config/alacritty ~/.config/alacritty
 
 if [ -d ~/.dotfiles/.fonts ]; then
    echo "[Cache] fonts"

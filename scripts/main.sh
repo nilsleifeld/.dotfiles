@@ -35,6 +35,15 @@ mkdir ~/.config/Code/User
 ln -s ~/.dotfiles/.config/Code/settings.json ~/.config/Code/User/settings.json
 ln -s ~/.dotfiles/.config/Code/keybindings.json ~/.config/Code/User/keybindings.json
 
+# tmux
+sudo apt install tmux -y
+rm -rf ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+mkdir ~/.config/tmux
+ln -s ~/.dotfiles/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf
+# tmux
+
 if [ -d ~/.dotfiles/.fonts ]; then
    echo "[Cache] fonts"
 else

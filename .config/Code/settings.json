@@ -1,0 +1,96 @@
+{
+  "workbench.editorAssociations": {
+    "*.pdf": "latex-workshop-pdf-hook"
+  },
+  "workbench.editor.showTabs": "multiple",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "svelte.enable-ts-plugin": true,
+  "workbench.statusBar.visible": false,
+  "breadcrumbs.enabled": false,
+  "window.menuBarVisibility": "toggle",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 0.2,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.compactFolders": false,
+  "editor.minimap.enabled": false,
+  "editor.lineNumbers": "relative",
+  "vim.leader": "<Space>",
+  "vim.commandLineModeKeyBindings": [],
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["<CapsLock>"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // switch b/w buffers
+    { "before": ["<S-h>"], "commands": [":bprevious"] },
+    { "before": ["<S-l>"], "commands": [":bnext"] },
+    // split
+    {
+      "before": ["leader", "w", "v"],
+      "commands": [":vsplit"]
+    },
+    {
+      "before": ["leader", "w", "s"],
+      "commands": [":split"]
+    },
+    // Navigation
+    {
+      "before": ["<C-j>"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    {
+      "before": ["leader", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    {
+      "before": ["leader", "s", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["leader", "s", "s"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["leader", "g"],
+      "commands": ["workbench.view.scm"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["leader", "c"],
+      "commands": ["editor.action.commentLine"]
+    }
+  ],
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  }
+}

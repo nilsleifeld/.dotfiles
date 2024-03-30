@@ -30,7 +30,10 @@ ln -s ~/.dotfiles/.zshrc ~/.zshrc
 
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.config/nvim ~/.config/nvim
-ln -s ~/.dotfiles/.config/alacritty ~/.config/alacritty
+
+mkdir ~/.config/Code/User
+ln -s ~/.dotfiles/.config/Code/settings.json ~/.config/Code/User/settings.json
+ln -s ~/.dotfiles/.config/Code/keybindings.json ~/.config/Code/User/keybindings.json
 
 if [ -d ~/.dotfiles/.fonts ]; then
    echo "[Cache] fonts"

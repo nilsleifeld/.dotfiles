@@ -119,3 +119,4 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

@@ -54,6 +54,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# start a browser
+bindsym $mod+b exec brave-browser
+
 # kill focused window
 bindsym $mod+q kill
 

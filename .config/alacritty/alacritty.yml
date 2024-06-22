@@ -22,3 +22,5 @@ colors:
    primary:
       background: '#1a1b26'
 
+key_bindings:
+   - { key: Return, mods: Super|Shift, action: SpawnNewInstance }

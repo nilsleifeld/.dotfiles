@@ -1,12 +1,13 @@
 # .dotfiles
 
 This repository contains my dotfiles for my development environment.
-Currently I using Pop!\_OS with nvim, tmux and zsh.
+Currently I using Pop!\_OS with i3, nvim, tmux and zsh.
 
 ## Installation
 
 > [!WARNING] These installation instructions are for Ubuntu-based systems. If you are using a different system, you must change the installation scripts in the ~/.dotfiles/scripts directory.
-> Clone the repository in your home directory.
+
+Clone the repository in your home directory.
 
 ```sh
 git clone https://github.com/nilsleifeld/.dotfiles.git ~/.dotfiles
@@ -52,4 +53,10 @@ To using the dotnet with nvim you need to install dotnet.
 
 ```sh
 brew install dotnet
+```
+
+Install i3 as window manager and dmenu as application launcher.
+
+```sh
+sudo apt install i3 dmenu -y
 ```

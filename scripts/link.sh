@@ -16,4 +16,11 @@ ln -s ~/.dotfiles/.config/Code/keybindings.json ~/.config/Code/User/keybindings.
 mkdir ~/.config/tmux
 ln -s ~/.dotfiles/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf
 
+mkdir ~/.config/i3
+ln -s ~/.dotfiles/.config/i3/config ~/.config/i3/config
+
+mkdir ~/.config/i3status
+ln -s ~/.dotfiles/.config/i3status/config ~/.config/i3status/config
+
+
 echo "Linking dotfiles done!"

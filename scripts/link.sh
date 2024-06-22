@@ -22,5 +22,8 @@ ln -s ~/.dotfiles/.config/i3/config ~/.config/i3/config
 mkdir ~/.config/i3status
 ln -s ~/.dotfiles/.config/i3status/config ~/.config/i3status/config
 
+mkdir ~/.config/alacritty
+ln -s ~/.dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+
 
 echo "Linking dotfiles done!"

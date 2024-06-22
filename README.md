@@ -60,3 +60,9 @@ Install i3 as window manager and dmenu as application launcher.
 ```sh
 sudo apt install i3 dmenu -y
 ```
+
+Install alacritty as terminal emulator.
+
+```sh
+sudo apt install alacritty -y
+```

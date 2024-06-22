@@ -120,3 +120,4 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export DOTNET_ROOT="/home/linuxbrew/.linuxbrew/opt/dotnet/libexec"

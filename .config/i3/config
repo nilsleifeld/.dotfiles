@@ -193,4 +193,14 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status 
+        separator_symbol "   "
+        font pango:JetBrains Mono Nerd Font 12 
+        colors {
+                background #000000
+                statusline #ffffff
+                focused_workspace #ffffff #ffffff #000000
+                active_workspace  #ffffff #000000 #ffffff
+                inactive_workspace #000000 #000000 #ffffff
+                urgent_workspace   #ffffff #000000 #ffffff
+        }
 }

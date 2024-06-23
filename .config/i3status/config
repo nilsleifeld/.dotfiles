@@ -3,31 +3,36 @@ general {
         interval = 5
 }
 
-order += "wireless wlan0"
-order += "ethernet eth0"
+order += "ethernet _first_"
+order += "wireless _first_"
+order += "memory"
 order += "battery 0"
 order += "tztime local"
 
-wireless wlan0 {
-        format_up = "%essid %quality"
-        format_down = "W: down"
-}
-
-ethernet eth0 {
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+wireless _first_ {
+    format_up = " %quality %essid"
+    format_down = " 󰖪 "
 }
 
 battery 0 {
-        format = "%status %percentage %remaining %emptytime"
-        format_down = "No battery"
-        status_chr = "⚡"
-        status_bat = ""
-        status_unk = "?"
-        status_full = ""
+        format = "%status %percentage"
+        format_down = "󰂃"
+        status_chr = "󰂄"
+        status_bat = "󰁹"
+        status_unk = "󱧥"
+        status_full = "󱟢"
         low_threshold = 10
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M"
+        format = "  %Y-%m-%d     %H:%M  "
+}
+
+memory {
+    format = "󰧑  %used/%total"
+}
+
+ethernet _first_ {
+    format_up = "󰈁"
+    format_down = "󰈂 "
 }

@@ -60,6 +60,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # start a browser
 bindsym $mod+b exec brave-browser
 
+# open a file manager
+bindsym $mod+f exec nautilus
+
 # kill focused window
 bindsym $mod+q kill
 

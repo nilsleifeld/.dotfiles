@@ -67,6 +67,12 @@ Install alacritty as terminal emulator.
 sudo apt install alacritty -y
 ```
 
+Install lazygit as git client.
+
+```sh
+brew install lazygit
+```
+
 ## Good to know
 
 ### Enable tap to click in i3 WM

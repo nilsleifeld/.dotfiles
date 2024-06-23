@@ -75,6 +75,8 @@ brew install lazygit
 
 ## Good to know
 
+In this section I will show you some problems that I have encountered and how I have solved them.
+
 ### Enable tap to click in i3 WM
 
 When switching from Gnome or KDE to using i3 tiling window manager on a laptop, you might be frustrated to discover that tap-to-click on your touchpad no longer functions. This is how to re-enable tap-to-click in i3 by properly using X11 configuration.
@@ -96,3 +98,34 @@ EOF
 Then log out and log back in, or reboot.
 
 Your find the full article [here](https://cravencode.com/post/essentials/enable-tap-to-click-in-i3wm/).
+
+### Brightness control on i3
+
+When the brightness keys are pressed, the brightness is not changed follow the instructions below. The original article can be found [here](https://sourabhtk37.github.io/blog/post/brightness-and-volume-control-i3/).
+
+Install xbacklight.
+
+```sh
+sudo apt install brightnessctl
+```
+
+The the following lines in your i3 config file controls the brightness.
+
+```
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+```
+
+- Find out the drivers for backlight that is present in your system with:
+
+```sh
+sudo find /sys/ -type f -iname 'brightness'
+```
+
+This will give you a hint to the drivers you have. Mine was an intel_backlight(others can be acpi_video0) with symlink to /sys/class/backlight/intel_backlight/brightness.
+
+- Change file mod bits so that it can be writable. For that do:
+
+```sh
+sudo chmod a+rw /sys/class/backlight/intel_backlight/brightness
+```

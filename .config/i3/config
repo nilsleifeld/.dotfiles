@@ -37,6 +37,16 @@ font pango:JetBrains Mono Nerd Font 8
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# Setup display DPI
+# TODO: show is working correctly
+# When it is working correctly add 
+# ~/.Xresources file to dotfiles
+exec --no-startup-id xrdb -merge ~/.Xresources
+# exec --no-startup-id xrandr --dpi 96 --output DP-2
+# exec --no-startup-id xrandr --dpi 144 --output DP-2
+# exec --no-startup-id xrandr --dpi 144 --output eDP-1 
+# exec --no-startup-id xrandr --dpi 96 --output eDP-1 
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -58,6 +68,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Brightness control
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -65,7 +76,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start a browser
-bindsym $mod+b exec brave-browser
+bindsym $mod+b exec zen
 
 # open a file manager
 bindsym $mod+f exec nautilus

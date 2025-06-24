@@ -34,6 +34,8 @@ Install tmux.
 sudo ~/.dotfiles/scripts/tmux.sh
 ```
 
+Open tmux and press `Prefix + I` to install the plugins.
+
 Install zsh.
 
 ```sh

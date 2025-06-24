@@ -14,6 +14,16 @@ return {
 
 		-- configure nvim-tree
 		nvimtree.setup({
+			diagnostics = {
+				enable = true,
+				show_on_dirs = true,
+				icons = {
+					hint = "",
+					info = "",
+					warning = "",
+					error = "",
+				},
+			},
 			view = {
 				width = 35,
 				relativenumber = true,

@@ -3,10 +3,6 @@
 # This script will install zsh and oh-my-zsh 
 # with the powerlevel10k theme.
 
-sudo apt install zsh -y
-
-sudo sudo chsh -s /bin/zsh
-sudo sudo chsh -s /bin/zsh nils
 
 rm -rf ~/.oh-my-zsh
 

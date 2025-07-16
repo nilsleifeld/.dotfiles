@@ -5,8 +5,7 @@ if ! [ -d ~/.dotfiles ]; then
    exit 1
 fi
 
-rm ~/.gitconfig
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+mkdir ~/.config 
 
 rm ~/.config/nvim
 ln -s ~/.dotfiles/.config/nvim ~/.config/nvim

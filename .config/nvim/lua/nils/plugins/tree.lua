@@ -14,6 +14,11 @@ return {
 
 		-- configure nvim-tree
 		nvimtree.setup({
+			update_focused_file = {
+				enable = true,
+				update_cwd = false,
+				ignore_list = {},
+			},
 			diagnostics = {
 				enable = true,
 				show_on_dirs = true,

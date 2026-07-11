@@ -8,10 +8,13 @@ fi
 mkdir -p ~/.config
 
 pi_extensions="$HOME/.dotfiles/.config/.pi/agent/extensions"
+pi_agentsmd="$HOME/.dotfiles/.config/.pi/agent/AGENTS.md"
 
 mkdir -p "$HOME/.pi/agent"
 rm -rf "$HOME/.pi/agent/extensions"
 ln -s "$pi_extensions" "$HOME/.pi/agent/extensions"
+rm -f "$HOME/.pi/agent/AGENTS.md"
+ln -s "$pi_agentsmd" "$HOME/.pi/agent/AGENTS.md"
 
 rm ~/.config/nvim
 ln -s ~/.dotfiles/.config/nvim ~/.config/nvim

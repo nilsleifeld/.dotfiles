@@ -3,5 +3,6 @@
 
 # Pi runtime data (only extensions are tracked)
 .config/.pi/agent/*
+!.config/.pi/agent/AGENTS.md
 !.config/.pi/agent/extensions/
 !.config/.pi/agent/extensions/**

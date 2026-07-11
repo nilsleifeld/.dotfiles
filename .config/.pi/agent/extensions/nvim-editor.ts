@@ -1,3 +1,4 @@
+import { spawnSync } from "node:child_process";
 import { CustomEditor, type ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { matchesKey, truncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
 
@@ -9,6 +10,38 @@ class NvimEditor extends CustomEditor {
 	private leaderTimer?: ReturnType<typeof setTimeout>;
 	private anchor = 0;
 	private register = "";
+
+	/** Keep Vim's register in sync with the operating system clipboard. */
+	private setRegister(value: string): void {
+		this.register = value;
+		try {
+			if (process.platform === "darwin") {
+				spawnSync("pbcopy", [], { input: value, encoding: "utf8" });
+			} else if (process.platform === "win32") {
+				spawnSync("clip.exe", [], { input: value, encoding: "utf8" });
+			} else if (process.env.WAYLAND_DISPLAY) {
+				spawnSync("wl-copy", [], { input: value, encoding: "utf8" });
+			} else {
+				spawnSync("xclip", ["-selection", "clipboard"], { input: value, encoding: "utf8" });
+			}
+		} catch { /* Keep the internal register working if no clipboard tool exists. */ }
+	}
+
+	private readClipboard(): string | undefined {
+		try {
+			let result;
+			if (process.platform === "darwin") {
+				result = spawnSync("pbpaste", [], { encoding: "utf8" });
+			} else if (process.platform === "win32") {
+				result = spawnSync("powershell.exe", ["-NoProfile", "-Command", "Get-Clipboard -Raw"], { encoding: "utf8" });
+			} else if (process.env.WAYLAND_DISPLAY) {
+				result = spawnSync("wl-paste", ["--no-newline"], { encoding: "utf8" });
+			} else {
+				result = spawnSync("xclip", ["-selection", "clipboard", "-o"], { encoding: "utf8" });
+			}
+			return result.status === 0 ? result.stdout : undefined;
+		} catch { return undefined; }
+	}
 
 	private absoluteCursor(): number {
 		const lines = this.getLines();
@@ -50,7 +83,7 @@ class NvimEditor extends CustomEditor {
 
 	private editRange(start: number, end: number, replacement = ""): void {
 		const text = this.getText();
-		this.register = text.slice(start, end);
+		this.setRegister(text.slice(start, end));
 		this.setText(text.slice(0, start) + replacement + text.slice(end));
 		this.setCursor(Math.min(start, this.getText().length));
 	}
@@ -146,7 +179,7 @@ class NvimEditor extends CustomEditor {
 		const to = Math.max(start, end) + (end > start && (key === "e" || key === "$") ? 1 : 0);
 		const cursor = start;
 		if (op === "y") {
-			this.register = this.getText().slice(from, to);
+			this.setRegister(this.getText().slice(from, to));
 			this.setCursor(cursor);
 		} else {
 			this.editRange(from, to);
@@ -159,7 +192,7 @@ class NvimEditor extends CustomEditor {
 		if (key === "y" || key === "d" || key === "x" || key === "c") {
 			const [start, end] = this.visualRange();
 			const value = this.getText().slice(start, end);
-			this.register = value;
+			this.setRegister(value);
 			if (key !== "y") this.editRange(start, end, "");
 			this.leaveVisual();
 			if (key === "c") this.mode = "insert";
@@ -231,7 +264,11 @@ class NvimEditor extends CustomEditor {
 		if (data === "A") { super.handleInput("\x05"); this.mode = "insert"; return; }
 		if (data === "o" || data === "O") { super.handleInput(data === "o" ? "\r" : "\x01\r\x1b[A"); this.mode = "insert"; return; }
 		if (data === "R") { this.mode = "insert"; return; }
-		if (data === "p" || data === "P") { if (this.register) { if (data === "p") this.moveBy(1); this.insertTextAtCursor(this.register); } return; }
+		if (data === "p" || data === "P") {
+			const value = this.readClipboard() ?? this.register;
+			if (value) { if (data === "p") this.moveBy(1); this.insertTextAtCursor(value); }
+			return;
+		}
 		if (data === "u") { super.handleInput("\x1a"); return; }
 		if (data === "x") { this.editRange(this.absoluteCursor(), this.absoluteCursor() + 1); return; }
 		if (data === "X") { this.editRange(Math.max(0, this.absoluteCursor() - 1), this.absoluteCursor()); return; }
@@ -244,7 +281,7 @@ class NvimEditor extends CustomEditor {
 				const lines = this.getLines();
 				const start = lines.slice(0, line).reduce((n, s) => n + s.length + 1, 0);
 				const end = start + lines[line]!.length + (line < lines.length - 1 ? 1 : 0);
-				if (op === "y") this.register = this.getText().slice(start, end);
+				if (op === "y") this.setRegister(this.getText().slice(start, end));
 				else {
 					this.editRange(start, end);
 					if (op === "c") this.mode = "insert";

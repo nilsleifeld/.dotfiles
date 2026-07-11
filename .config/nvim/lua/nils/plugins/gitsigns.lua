@@ -23,7 +23,8 @@ return {
 					vim.keymap.set(mode, l, r, opts)
 				end
 
-				map("n", "<leader>gp", gs.preview_hunk, { desc = "Preview hunk" })
+				map("n", "gn", gs.next_hunk, { desc = "Next git hunk" })
+				map("n", "gp", gs.prev_hunk, { desc = "Previous git hunk" })
 				map("n", "<leader>gd", gs.diffthis, { desc = "Diff this" })
 				map("n", "<leader>gr", gs.reset_hunk, { desc = "Reset hunk" })
 				map("v", "<leader>gr", function()

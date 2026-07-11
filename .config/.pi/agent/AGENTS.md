@@ -1,3 +1,3 @@
 # Pi AGENTS.md
 
-- Always begin every response with `:)`
+- Always begin every response with `🦜`

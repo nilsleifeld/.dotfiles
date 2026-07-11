@@ -1,2 +1,8 @@
 # Generated files
 .fonts
+
+# Pi runtime data (only extensions are tracked)
+.config/.pi/agent/*
+!.config/.pi/agent/extensions/
+!.config/.pi/agent/test/
+!.config/.pi/agent/extensions/**

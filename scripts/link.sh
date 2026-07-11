@@ -5,7 +5,13 @@ if ! [ -d ~/.dotfiles ]; then
    exit 1
 fi
 
-mkdir ~/.config 
+mkdir -p ~/.config
+
+pi_extensions="$HOME/.dotfiles/.config/.pi/agent/extensions"
+
+mkdir -p "$HOME/.pi/agent"
+rm -rf "$HOME/.pi/agent/extensions"
+ln -s "$pi_extensions" "$HOME/.pi/agent/extensions"
 
 rm ~/.config/nvim
 ln -s ~/.dotfiles/.config/nvim ~/.config/nvim

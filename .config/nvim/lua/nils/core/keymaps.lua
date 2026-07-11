@@ -12,6 +12,16 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Exit file and open explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+-- Copy an agent reference for the current file or visual line selection.
+vim.keymap.set("n", "<leader>a", function()
+	require("nils.core.agent_reference").copy_file_reference()
+end, { desc = "Copy agent file reference (@path)" })
+vim.keymap.set("x", "<leader>a", function()
+	require("nils.core.agent_reference").copy_selection_reference()
+	-- Use the same visual-mode exit behavior as `y` without overwriting any register.
+	vim.cmd([[normal! "_y]])
+end, { desc = "Copy agent reference with lines" })
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 

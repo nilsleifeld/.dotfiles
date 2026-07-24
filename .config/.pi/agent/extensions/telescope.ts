@@ -354,7 +354,7 @@ class TelescopePicker implements Component, Focusable {
 			return [truncateToWidth(this.theme.fg("warning", "Telescope needs at least 40 columns"), width, "")];
 		}
 		const innerWidth = width - 2;
-		const bodyRows = Math.max(5, Math.min(28, Math.floor(this.tui.terminal.rows * 0.8) - 5));
+		const bodyRows = Math.max(5, Math.min(28, Math.floor(this.tui.terminal.rows * 0.8) - 4));
 		const listWidth = this.previewVisible
 			? Math.max(18, Math.min(Math.floor(innerWidth * 0.4), innerWidth - 20))
 			: innerWidth;
@@ -405,11 +405,6 @@ class TelescopePicker implements Component, Focusable {
 			? `├${"─".repeat(listWidth)}┴${"─".repeat(previewWidth)}┤`
 			: `├${"─".repeat(innerWidth)}┤`;
 		lines.push(border(separator));
-		const help =
-			this.mode === "normal"
-				? ` NORMAL · j/k navigate · i search · p preview ${this.previewVisible ? "off" : "on"} · Enter attach · q cancel`
-				: " INSERT · type to search · Esc normal mode · Enter attach · Ctrl-u clear";
-		lines.push(row(this.theme.fg("dim", help)));
 		lines.push(row(this.renderQuery(innerWidth)));
 		lines.push(border(`╰${"─".repeat(innerWidth)}╯`));
 		return lines;

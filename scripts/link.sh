@@ -16,6 +16,10 @@ ln -s "$pi_extensions" "$HOME/.pi/agent/extensions"
 rm -f "$HOME/.pi/agent/AGENTS.md"
 ln -s "$pi_agentsmd" "$HOME/.pi/agent/AGENTS.md"
 
+mkdir -p "$HOME/.cursor/rules"
+rm -rf "$HOME/.cursor/rules/ponytail.mdc"
+ln -s "$HOME/.dotfiles/.config/.cursor/rules/ponytail.mdc" "$HOME/.cursor/rules/ponytail.mdc"
+
 rm ~/.config/nvim
 ln -s ~/.dotfiles/.config/nvim ~/.config/nvim
 

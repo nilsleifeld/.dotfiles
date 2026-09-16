@@ -1,1 +1,4 @@
 theme = "tokyonight"
+
+# Forward Cmd+V to terminal apps; Pi handles text and screenshot clipboard data.
+keybind = super+v=unbind

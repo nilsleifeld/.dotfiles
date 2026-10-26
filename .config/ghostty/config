@@ -1,4 +1,4 @@
 theme = "tokyonight"
 
-# Forward Cmd+V to terminal apps; Pi handles text and screenshot clipboard data.
-keybind = super+v=unbind
+# Paste in tmux and other terminal apps instead of forwarding Cmd+V.
+keybind = super+v=paste_from_clipboard

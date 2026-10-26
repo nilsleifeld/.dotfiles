@@ -214,10 +214,6 @@ class NvimEditor extends CustomEditor {
 	}
 
 	handleInput(data: string): void {
-		if (matchesKey(data, "super+v")) {
-			this.onPasteImage?.();
-			return;
-		}
 		if (matchesKey(data, "escape")) {
 			if (this.mode === "insert") this.mode = "normal";
 			else if (this.mode === "visual" || this.mode === "visual-line") this.leaveVisual();
